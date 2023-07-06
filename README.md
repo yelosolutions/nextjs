@@ -1,2 +1,3 @@
-# nextjs
-Getting comfortable with Next.js
+# Next.js
+
+## Getting comfortable with Next.js
