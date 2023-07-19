@@ -1,10 +1,12 @@
 /**
  * getSortedPosts - utility function that reads the file system
+ * note: lib folder does not have an assigned name like the pages folder
+ *  - one is allowed to name it anything, usually lib or utils 
  */
 
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import fs from 'fs'; // Node.js module that allow read of files from the file system.
+import path from 'path'; // ..."" allow manipulation of file paths.
+import matter from 'gray-matter'; // library that let's you parse the metadata in each markdown file.
 import { cwd } from 'process';
 
 //get path of 'posts' directory with markdown files that represent blogs(file system)
@@ -31,6 +33,7 @@ export function getSortedPosts() {
         //combine the data with the id - return id and ...metadata
         return {id, ...matterResults.data};
     });
+    console.log(id, `: ${matterResults}`)
 
     //sort posts by date
     return (
