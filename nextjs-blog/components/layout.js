@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const name = 'Jay';
-export const siteTitle = 'Creating an blog app with Next.js';
+export const siteTitle = 'Creating a blog app with Next.js';
 
 
 export default function Layout({children, home}) {
