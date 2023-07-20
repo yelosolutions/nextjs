@@ -7,12 +7,12 @@ import { getSortedPosts } from '../lib/posts';
 
 
 //Fetch the parsed data
-export async function  getStaticProps (){
+export async function  getStaticProps() {
   const allPostsData = getSortedPosts();
-  return {props: {allPostsData,},};
+  return {props: {allPostsData}};
 };
 
-export default function Home() {
+export default function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -20,10 +20,22 @@ export default function Home() {
       </Head>
       <section className={utilStyles.headingMd}>
         <p>[I am a web developer]</p>
-        <p>
-          (This is a sample website - I’ll be building a site like this on{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
+        
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({id, title, date}) => (
+            <li key={id} className={utilStyles.listItem}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+
       </section>
     </Layout>
   )

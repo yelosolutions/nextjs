@@ -33,8 +33,6 @@ export function getSortedPosts() {
         //combine the data with the id - return id and ...metadata
         return {id, ...matterResults.data};
     });
-    console.log(id, `: ${matterResults}`)
-
     //sort posts by date
     return (
         allPosts.sort((a, b) =>{
