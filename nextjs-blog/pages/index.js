@@ -29,7 +29,7 @@ export default function Home({ allPostsData }) {
           {allPostsData.map(({id, title, date}) => (
             <li key={id} className={utilStyles.listItem}>
               <Link
-              href='/posts'
+              href={`/posts/${id}`}
               >
                 {title}
               </Link>

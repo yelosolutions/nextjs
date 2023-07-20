@@ -56,15 +56,15 @@ export function getAllPostIds() {
 }
 
 //fetch data from file system based on id 
-export function getPostData({id}) {
+export function getPostData(id) {
     //md file path
-    const fullPath = path.join(postsDirPath, `${[id]}.md`);
+    const fullPath = path.join(postsDirPath, `${id}.md`);
 
-    //read content
-    const postContent = fs.readFileSync(fullPath);
+    //read file content
+    const fileContent = fs.readFileSync(fullPath, 'utf8');
     
     //parse data
-    const matterResult =  matter(postContent);
+    const matterResult =  matter(fileContent);
 
     return { id, ...matterResult.data};
 }

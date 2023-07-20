@@ -1,8 +1,7 @@
-import { getStaticProps } from "..";
 import Layout from "../../components/layout";
-import { getAllPostIds } from "../../lib/posts";
-import { getPostData } from '../lib/posts';
+import { getAllPostIds, getPostData } from "../../lib/posts";
 
+//returns an array of possible values for id
 export async function getStaticPaths() {
     //array of known paths
     const paths = getAllPostIds();
@@ -13,7 +12,7 @@ export async function getStaticPaths() {
 };
 
 
-//pre-render pursed data
+//pre-render pursed data for post with 'id'
 export async function getStaticProps({ params }) {
     const blogContent = getPostData(params.id);
     return {
@@ -21,6 +20,7 @@ export async function getStaticProps({ params }) {
     };
 };
 
+//component to render this page
 export default function Post({blogContent}) {
     const {id, title, date} = blogContent;
     return <Layout>
@@ -29,6 +29,7 @@ export default function Post({blogContent}) {
         {id}
         <br />
         {date}
+        
     </Layout>
 };
 
