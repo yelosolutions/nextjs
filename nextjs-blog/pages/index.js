@@ -19,7 +19,7 @@ export default function Home({ allPostsData }) {
         <title>{siteTitle}</title>
       </Head>
       <section className={utilStyles.headingMd}>
-        <p>[I am a web developer]</p>
+        <p>I am a Web Developer and Data enthusiast from Ke</p>
         
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
@@ -27,7 +27,12 @@ export default function Home({ allPostsData }) {
         <ul className={utilStyles.list}>
           {allPostsData.map(({id, title, date}) => (
             <li key={id} className={utilStyles.listItem}>
-              {title}
+              <Link
+              href='/posts'
+              >
+                {title}
+              </Link>
+              
               <br />
               {id}
               <br />
