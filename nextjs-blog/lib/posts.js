@@ -44,3 +44,27 @@ export function getSortedPosts() {
         })
     );
 }
+
+//returns a list of objects with params key and a object with id key and md filename as value
+export function getAllPostIds() {
+    const fileNames = fs.readdirSync(postsDirPath);
+    return fileNames.map((filename) => {
+        return {
+            params:{id: filename.replace(/\.md$/, '')},
+        };
+    });
+}
+
+//fetch data from file system based on id 
+export function getPostData({id}) {
+    //md file path
+    const fullPath = path.join(postsDirPath, `${[id]}.md`);
+
+    //read content
+    const postContent = fs.readFileSync(fullPath);
+    
+    //parse data
+    const matterResult =  matter(postContent);
+
+    return { id, ...matterResult.data};
+}

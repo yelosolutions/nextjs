@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { getSortedPosts } from '../lib/posts';
 
 
+
 //Fetch the parsed data
 export async function  getStaticProps() {
   const allPostsData = getSortedPosts();
