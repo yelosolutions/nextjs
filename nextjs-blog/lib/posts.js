@@ -8,6 +8,9 @@ import fs from 'fs'; // Node.js module that allow read of files from the file sy
 import path from 'path'; // ..."" allow manipulation of file paths.
 import matter from 'gray-matter'; // library that let's you parse the metadata in each markdown file.
 import { cwd } from 'process';
+import { remark } from 'remark';
+import html from 'remark-html';
+
 
 //get path of 'posts' directory with markdown files that represent blogs(file system)
 const postsDirPath = path.join(cwd(), 'posts');
@@ -67,6 +70,15 @@ export async function getPostData(id) {
     const matterResult =  matter(fileContent);
 
     //use remark to convert markdown to HTML string
+    const processedContent = await remark()
+    .use(html)
+    .process(matterResult.content);
 
-    return { id, ...matterResult.data};
+    const contentHTML =  processedContent.toString();
+
+    //combine the data with the id and HTML string
+    return { 
+        id,
+        contentHTML,
+        ...matterResult.data};
 }

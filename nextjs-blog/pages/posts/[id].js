@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
 //pre-render pursed data for post with 'id'
 export async function getStaticProps({ params }) {
-    const blogContent = getPostData(params.id);
+    const blogContent = await getPostData(params.id);
     return {
         props: {blogContent}
     };
@@ -29,6 +29,8 @@ export default function Post({blogContent}) {
         {id}
         <br />
         {date}
+        <br />
+        <div dangerouslySetInnerHTML={{__html: blogContent.contentHTML}}/>
         
     </Layout>
 };
