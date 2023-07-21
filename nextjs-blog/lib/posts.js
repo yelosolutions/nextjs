@@ -56,7 +56,7 @@ export function getAllPostIds() {
 }
 
 //fetch data from file system based on id 
-export function getPostData(id) {
+export async function getPostData(id) {
     //md file path
     const fullPath = path.join(postsDirPath, `${id}.md`);
 
@@ -65,6 +65,8 @@ export function getPostData(id) {
     
     //parse data
     const matterResult =  matter(fileContent);
+
+    //use remark to convert markdown to HTML string
 
     return { id, ...matterResult.data};
 }
