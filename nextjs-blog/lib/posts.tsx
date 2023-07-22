@@ -10,6 +10,7 @@ import matter from 'gray-matter'; // library that let's you parse the metadata i
 import { cwd } from 'process';
 import { remark } from 'remark';
 import html from 'remark-html';
+import { stringify } from 'querystring';
 
 
 //get path of 'posts' directory with markdown files that represent blogs(file system)
@@ -34,7 +35,7 @@ export function getSortedPosts() {
         const matterResults = matter( fileContents);
 
         //combine the data with the id - return id and ...metadata
-        return {id, ...matterResults.data};
+        return {id, ...(matterResults.data as { date: string; title: string})};
     });
     //sort posts by date
     return (
@@ -80,5 +81,5 @@ export async function getPostData(id) {
     return { 
         id,
         contentHTML,
-        ...matterResult.data};
+        ...(matterResult.data as { date:string; title:string } )};
 }

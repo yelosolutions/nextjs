@@ -8,7 +8,10 @@ const name = 'Jay';
 export const siteTitle = 'Creating a blog app with Next.js';
 
 
-export default function Layout({children, home}) {
+export default function Layout({children, home} : {
+    children: React.ReactNode
+    home? : boolean
+}) {
 
     return (
         <div className={styles.container}>
