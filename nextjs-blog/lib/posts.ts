@@ -10,7 +10,6 @@ import matter from 'gray-matter'; // library that let's you parse the metadata i
 import { cwd } from 'process';
 import { remark } from 'remark';
 import html from 'remark-html';
-import { stringify } from 'querystring';
 
 
 //get path of 'posts' directory with markdown files that represent blogs(file system)
@@ -60,7 +59,7 @@ export function getAllPostIds() {
 }
 
 //fetch data from file system based on id 
-export async function getPostData(id) {
+export async function getPostData(id: string) {
     //md file path
     const fullPath = path.join(postsDirPath, `${id}.md`);
 

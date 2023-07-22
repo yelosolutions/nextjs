@@ -5,11 +5,12 @@ import utilStyles from '../styles/utils.module.css';
 import Link from 'next/link';
 import { getSortedPosts } from '../lib/posts';
 import Date from '../components/date';
+import { GetStaticProps } from 'next';
 
 
 
 //Fetch the parsed data
-export async function  getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const allPostsData = getSortedPosts();
   return {props: {allPostsData}};
 };

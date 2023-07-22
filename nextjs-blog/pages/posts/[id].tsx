@@ -19,7 +19,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 //pre-render pursed data for post with 'id'
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string);
+  const postData = await getPostData(params?.id as string);
   return {
     props: { postData },
   };
@@ -27,12 +27,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 //component to render this page
 export default function Post({
-  postData,
+  postData
 }: {
   postData: {
-    title: string;
-    date: string;
-    contentHtml: string;
+    title: string
+    date: string
+    contentHtml: string
   };
 }) {
   const { title, date } = postData;
